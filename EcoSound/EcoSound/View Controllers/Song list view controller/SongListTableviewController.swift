@@ -21,7 +21,7 @@ class SongListTableviewController: UITableViewController {
     }
     
     //MARK:- user defined methods
-    private func setUI(){
+    private func setUI(){        
         tableView.tableFooterView = UIView()    //To remove empty cells in UITableView
     }
     
