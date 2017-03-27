@@ -28,7 +28,6 @@ class SongListTableviewController: UITableViewController {
     //MARK:- Get the song list model object (which is present locally for now) using business layer
     private func getMusicListData(){
         arrayOfMusicInformationModelObjects = SongListBusinessLayer.sharedInstance.getMusicInformationDataArray()
-        print(arrayOfMusicInformationModelObjects)
         tableView.reloadData()
     }
     

@@ -11,5 +11,6 @@ import Foundation
 let KSONG_NAME_1 = "i_hate_u,i_love_u"
 
 //keys
-let KTITLE = "title"
-let KARTIST = "artist"
+let KTITLE_KEY = "title"
+let KARTIST_KEY = "artist"
+let KPATH_STRING_KEY = "url"

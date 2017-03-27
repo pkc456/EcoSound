@@ -11,7 +11,7 @@ import Foundation
 public class MusicInformation {
 	public var song : String?
 	public var artists : String?
-
+    public var pathString : URL?
 /**
     Returns an array of models based on given dictionary.
     
@@ -44,8 +44,9 @@ public class MusicInformation {
 */
 	required public init?(dictionary: NSDictionary) {
 
-		song = dictionary[KTITLE] as? String
-		artists = dictionary[KARTIST] as? String
+		song = dictionary[KTITLE_KEY] as? String
+		artists = dictionary[KARTIST_KEY] as? String
+        pathString = dictionary[KPATH_STRING_KEY] as? URL
 	}
 
 		
@@ -58,9 +59,9 @@ public class MusicInformation {
 
 		let dictionary = NSMutableDictionary()
 
-		dictionary.setValue(self.song, forKey: KTITLE)
-		dictionary.setValue(self.artists, forKey: KARTIST)
-
+		dictionary.setValue(self.song, forKey: KTITLE_KEY)
+		dictionary.setValue(self.artists, forKey: KARTIST_KEY)
+        dictionary.setValue(self.pathString, forKey: KPATH_STRING_KEY)
 		return dictionary
 	}
 

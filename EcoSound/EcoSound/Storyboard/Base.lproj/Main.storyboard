@@ -70,14 +70,14 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTG-dS-ixU">
-                                <rect key="frame" x="10" y="100" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTG-dS-ixU">
+                                <rect key="frame" x="10" y="100" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UJr-Yy-oq0">
-                                <rect key="frame" x="62" y="109" width="251" height="2"/>
+                                <rect key="frame" x="66" y="109" width="247" height="2"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Q2-kS-igz">
                                 <rect key="frame" x="323" y="100" width="42" height="21"/>
@@ -85,14 +85,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTg-WF-otN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZE-nc-m3U">
+                                <rect key="frame" x="166.5" y="127" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTg-WF-otN">
                                 <rect key="frame" x="0.0" y="280" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem image="Play" id="Qi4-hc-sYO"/>
+                                    <barButtonItem image="Play" id="Qi4-hc-sYO">
+                                        <connections>
+                                            <action selector="btnPlayAction:" destination="vDw-kL-u34" id="Vid-x1-tLj"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="95q-dA-mzr"/>
-                                    <barButtonItem image="Pause" id="uM3-6G-jFd"/>
+                                    <barButtonItem image="Pause" id="uM3-6G-jFd">
+                                        <connections>
+                                            <action selector="btnPauseAction:" destination="vDw-kL-u34" id="Cz2-yj-vLs"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="B4I-Ir-VEJ"/>
-                                    <barButtonItem title="Stop" id="OQd-Cf-6tJ"/>
+                                    <barButtonItem title="Stop" id="OQd-Cf-6tJ">
+                                        <connections>
+                                            <action selector="btnStopAction:" destination="vDw-kL-u34" id="DT3-dO-jKK"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -100,7 +118,9 @@
                         <constraints>
                             <constraint firstItem="UJr-Yy-oq0" firstAttribute="centerY" secondItem="nTG-dS-ixU" secondAttribute="centerY" id="3hl-c0-Qdd"/>
                             <constraint firstItem="nTG-dS-ixU" firstAttribute="leading" secondItem="dI8-CW-m9X" secondAttribute="leading" constant="10" id="8oF-1t-S4T"/>
+                            <constraint firstItem="4ZE-nc-m3U" firstAttribute="centerX" secondItem="mTg-WF-otN" secondAttribute="centerX" id="ID1-3w-g8f"/>
                             <constraint firstItem="mTg-WF-otN" firstAttribute="centerY" secondItem="dI8-CW-m9X" secondAttribute="centerY" id="IIi-Uo-QdH"/>
+                            <constraint firstItem="4ZE-nc-m3U" firstAttribute="top" secondItem="UJr-Yy-oq0" secondAttribute="bottom" constant="16" id="J7u-DF-p0y"/>
                             <constraint firstItem="mTg-WF-otN" firstAttribute="top" secondItem="nTG-dS-ixU" secondAttribute="bottom" constant="159" id="Mc0-jW-5JQ"/>
                             <constraint firstItem="mTg-WF-otN" firstAttribute="leading" secondItem="dI8-CW-m9X" secondAttribute="leading" id="Szh-W9-I52"/>
                             <constraint firstItem="3Q2-kS-igz" firstAttribute="leading" secondItem="UJr-Yy-oq0" secondAttribute="trailing" constant="10" id="X2f-iu-bs7"/>
@@ -112,6 +132,11 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="labelElapsed" destination="4ZE-nc-m3U" id="DuF-54-Db9"/>
+                        <outlet property="labelEndTime" destination="3Q2-kS-igz" id="c3Y-Bh-rHH"/>
+                        <outlet property="progressView" destination="UJr-Yy-oq0" id="aVQ-5m-JLW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xgE-vN-HXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

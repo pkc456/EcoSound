@@ -27,31 +27,25 @@ class SongListBusinessLayer: NSObject
     
     private func getMusicListData() -> NSMutableDictionary{
         let data : NSMutableDictionary = NSMutableDictionary()
-        
         let url_Song_1 = Bundle.main.url(forResource: KSONG_NAME_1, withExtension: "mp3")
         let asset :AVAsset = AVAsset.init(url: url_Song_1!)
         
-        
-//        data.setValue("Pardeep", forKey: KTITLE)
-        
-        //pkc, pending
-        
+        data.setValue(url_Song_1, forKey: KPATH_STRING_KEY)
         
         for metaDataItems in asset.commonMetadata {
             //getting the title of the song
             if metaDataItems.commonKey == "title" {
                 if let title = metaDataItems.value{
-                    data.setValue(title, forKey: KTITLE)
+                    data.setValue(title, forKey: KTITLE_KEY)
                 }
             }
             
             if metaDataItems.commonKey == "artist" {
                 if let artist = metaDataItems.value{
-                    data.setValue(artist, forKey: KARTIST)
+                    data.setValue(artist, forKey: KARTIST_KEY)
                 }
             }
-        }
- 
+        } 
         
         return data
     }
