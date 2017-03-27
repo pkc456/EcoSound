@@ -55,7 +55,7 @@ class SongDetailViewController: UIViewController {
     }
     
     private func setDurationLabel(){
-        labelEndTime.text = "\(Float(audioPlayer.duration))"
+        labelEndTime.text = stringFromTimeInterval(interval: audioPlayer.duration)        
     }
     
     //Set up audio player and play
@@ -98,7 +98,7 @@ class SongDetailViewController: UIViewController {
     {
         if audioPlayer.isPlaying
         {
-            labelElapsed.text = "\(Float(audioPlayer.currentTime/audioPlayer.duration))"
+            labelElapsed.text = stringFromTimeInterval(interval: audioPlayer.currentTime)
             progressView.setProgress(Float(audioPlayer.currentTime/audioPlayer.duration), animated: true)   //Update progress
         }
     }
@@ -119,6 +119,7 @@ class SongDetailViewController: UIViewController {
         audioPlayer.stop()
         audioPlayer.currentTime = 0
         progressView.progress = 0.0
+        labelElapsed.text = "00:00"
     }
     
     //MARK:- Attributed text helper methods
@@ -139,10 +140,20 @@ class SongDetailViewController: UIViewController {
         labelInstance.attributedText = departureAttributedString
     }
 
+    //MARK:- Utility methods (These utility methods can be moved to separate utility class in case of multiple view controllers)
     private func getRandomColor() -> UIColor{
         let randomRed = Float(drand48())
         let randomGreen = Float(drand48())
         let randomBlue = Float(drand48())
         return UIColor.init(colorLiteralRed: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
+    }
+    
+    func stringFromTimeInterval(interval: TimeInterval) -> String {
+        let ti = NSInteger(interval)
+        
+        let seconds = ti % 60
+        let minutes = (ti / 60) % 60
+        
+        return String(format: "%0.2d:%0.2d",minutes,seconds)
     }
 }
