@@ -18,10 +18,11 @@ class SongListBusinessLayer: NSObject
         return Static.instance
     }
     
-    func getMusicInformationData() -> MusicInformation {
+    func getMusicInformationDataArray() -> [MusicInformation] {
         let musicDictionary = getMusicListData()
-        let modelObject = MusicInformation.init(dictionary: musicDictionary)
-        return modelObject!
+        
+        let arrayOfMusicData = MusicInformation.modelsFromDictionaryArray(array: [musicDictionary])
+        return arrayOfMusicData
     }
     
     private func getMusicListData() -> NSMutableDictionary{

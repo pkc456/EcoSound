@@ -26,7 +26,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Km0-6A-AFr">
-                                            <rect key="frame" x="73" y="11" width="242" height="21"/>
+                                            <rect key="frame" x="0.0" y="11" width="136" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtT-Rl-Rk5">
+                                            <rect key="frame" x="201" y="11" width="158" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -35,6 +42,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="labelArtist" destination="VtT-Rl-Rk5" id="9Kr-01-EKK"/>
                                     <outlet property="labelSong" destination="Km0-6A-AFr" id="lXS-2z-eI8"/>
                                 </connections>
                             </tableViewCell>
@@ -49,6 +57,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="24P-SN-cPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1116" y="183.95802098950526"/>
+        </scene>
+        <!--Song Detail View Controller-->
+        <scene sceneID="3mc-2c-5EH">
+            <objects>
+                <viewController storyboardIdentifier="SongDetailViewController" id="vDw-kL-u34" customClass="SongDetailViewController" customModule="EcoSound" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oFn-lO-SQa"/>
+                        <viewControllerLayoutGuide type="bottom" id="GV7-OP-pRQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dI8-CW-m9X">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xgE-vN-HXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1873" y="184"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2eE-lm-xh4">

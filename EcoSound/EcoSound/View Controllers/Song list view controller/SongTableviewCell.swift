@@ -12,11 +12,12 @@ import UIKit
 class SongTableviewCell: UITableViewCell
 {
     
+    @IBOutlet weak var labelArtist: UILabel!
     @IBOutlet weak var labelSong: UILabel!
     
     func configureCellWithData(musicInformationModelObject : MusicInformation)
     {
         labelSong.text = musicInformationModelObject.song
-        
+        labelArtist.text = musicInformationModelObject.artists
     }
 }

@@ -11,26 +11,45 @@ import UIKit
 
 class SongListTableviewController: UITableViewController {
     
-    var musicInformationModelObject : MusicInformation!
+    var arrayOfMusicInformationModelObjects : [MusicInformation]!
+//    var musicInformationModelObject : MusicInformation!
     
+    //MARK:- view life cycle methods
     override func viewDidLoad() {
+        setUI()
         getMusicListData()
     }
     
+    //MARK:- user defined methods
+    private func setUI(){
+        tableView.tableFooterView = UIView()    //To remove empty cells in UITableView
+    }
+    
+    //MARK:- Get the song list model object (which is present locally for now) using business layer
     private func getMusicListData(){
-        musicInformationModelObject = SongListBusinessLayer.sharedInstance.getMusicInformationData()
-        print(musicInformationModelObject)
+        arrayOfMusicInformationModelObjects = SongListBusinessLayer.sharedInstance.getMusicInformationDataArray()
+        print(arrayOfMusicInformationModelObjects)
         tableView.reloadData()
     }
     
     // MARK: - Table view data source and delegate
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        var numberOfRows = 0;
+        if let arrayMusicData = arrayOfMusicInformationModelObjects{
+            numberOfRows = arrayMusicData.count
+        }
+        return numberOfRows
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SongTableviewCell", for: indexPath) as! SongTableviewCell
-        cell.configureCellWithData(musicInformationModelObject: musicInformationModelObject)
+        cell.configureCellWithData(musicInformationModelObject: arrayOfMusicInformationModelObjects[indexPath.row])
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let objSongDetailViewControllerObject :SongDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SongDetailViewController") as! SongDetailViewController
+        objSongDetailViewControllerObject.selectedMusicInformationModelObject = arrayOfMusicInformationModelObjects[indexPath.row]
+        self.navigationController?.pushViewController(objSongDetailViewControllerObject, animated: true)
     }
 }
