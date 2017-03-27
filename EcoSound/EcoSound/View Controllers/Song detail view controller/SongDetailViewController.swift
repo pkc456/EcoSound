@@ -31,6 +31,12 @@ class SongDetailViewController: UIViewController {
         invalidateTimer()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        audioPlayer.stop()
+        invalidateTimer()
+    }
+    
     //Set the label and other IBOutlets values
     private func setUI(){
         labelEndTime.text = "\(Float(audioPlayer.duration))"
@@ -38,6 +44,9 @@ class SongDetailViewController: UIViewController {
     
     //Set up audio player and play
     private func setUpAudioPlayer(){
+        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        _ = try? AVAudioSession.sharedInstance().setActive(true)
+        
         do
         {
             audioPlayer = try AVAudioPlayer(contentsOf: selectedMusicInformationModelObject.pathString!)
