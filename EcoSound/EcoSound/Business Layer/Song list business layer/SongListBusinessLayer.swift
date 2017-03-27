@@ -34,18 +34,35 @@ class SongListBusinessLayer: NSObject
         
         for metaDataItems in asset.commonMetadata {
             //getting the title of the song
-            if metaDataItems.commonKey == "title" {
+            if metaDataItems.commonKey == KTITLE_KEY {
+                if let title = metaDataItems.value{
+                    data.setValue(title, forKey: KTITLE_KEY)
+                }
+            }else if metaDataItems.commonKey == KSUBJECT_KEY {
                 if let title = metaDataItems.value{
                     data.setValue(title, forKey: KTITLE_KEY)
                 }
             }
             
-            if metaDataItems.commonKey == "artist" {
+            
+            if metaDataItems.commonKey == KTYPE_KEY {
+                if let type = metaDataItems.value{
+                    data.setValue(type, forKey: KTYPE_KEY)
+                }
+            }
+            
+            if metaDataItems.commonKey == KARTIST_KEY {
                 if let artist = metaDataItems.value{
                     data.setValue(artist, forKey: KARTIST_KEY)
                 }
             }
-        } 
+            
+            if metaDataItems.commonKey == KALBUM_KEY {
+                if let albumName = metaDataItems.value{
+                    data.setValue(albumName, forKey: KALBUM_KEY)
+                }
+            }
+        }
         
         return data
     }

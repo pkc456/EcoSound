@@ -16,6 +16,13 @@ class SongDetailViewController: UIViewController {
     var audioPlayer:AVAudioPlayer!
     var audioTimer : Timer?
 
+    
+    @IBOutlet weak var labelSongName: UILabel!
+    @IBOutlet weak var labelArtist: UILabel!
+    @IBOutlet weak var labelAlbum: UILabel!
+    @IBOutlet weak var labelType: UILabel!
+    
+    
     @IBOutlet weak var labelEndTime: UILabel!
     @IBOutlet weak var labelElapsed: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
@@ -23,6 +30,7 @@ class SongDetailViewController: UIViewController {
     
     //MARK:- view life cycle methods
     override func viewDidLoad() {
+        setUI()
         setUpAudioPlayer()
     }
     
@@ -39,6 +47,14 @@ class SongDetailViewController: UIViewController {
     
     //Set the label and other IBOutlets values
     private func setUI(){
+        self.navigationItem.title = "Song detail"
+        labelSongName.text = selectedMusicInformationModelObject.song
+        setAttributedTextOnArtistLabel(labelInstance: labelArtist, heading: "Artist", artistName: selectedMusicInformationModelObject.artists!)
+        setAttributedTextOnArtistLabel(labelInstance: labelAlbum, heading: "Album", artistName: selectedMusicInformationModelObject.album!)
+        setAttributedTextOnArtistLabel(labelInstance: labelType, heading: "Type", artistName: selectedMusicInformationModelObject.type!)
+    }
+    
+    private func setDurationLabel(){
         labelEndTime.text = "\(Float(audioPlayer.duration))"
     }
     
@@ -55,7 +71,7 @@ class SongDetailViewController: UIViewController {
             audioPlayer.play()
          
             addTimer()
-            setUI()
+            setDurationLabel()
         }
         catch
         {
@@ -103,5 +119,30 @@ class SongDetailViewController: UIViewController {
         audioPlayer.stop()
         audioPlayer.currentTime = 0
         progressView.progress = 0.0
+    }
+    
+    //MARK:- Attributed text helper methods
+    private func setAttributedTextOnArtistLabel(labelInstance : UILabel, heading : String, artistName : String){
+        let departureAttribute = [
+            NSFontAttributeName : UIFont.systemFont(ofSize: 14.0),
+            NSForegroundColorAttributeName : UIColor.black,
+            ]
+        let departureAttributedString = NSMutableAttributedString(string: String(format: "%@ ⇾ ",heading), attributes: departureAttribute)
+        
+        let arrivalAttribute = [
+            NSFontAttributeName : UIFont.systemFont(ofSize: 14.0),
+            NSForegroundColorAttributeName : getRandomColor()
+            ]
+        let arrivalAttributedString = NSAttributedString(string: String(format: "%@", artistName), attributes: arrivalAttribute)
+        
+        departureAttributedString.append(arrivalAttributedString)
+        labelInstance.attributedText = departureAttributedString
+    }
+
+    private func getRandomColor() -> UIColor{
+        let randomRed = Float(drand48())
+        let randomGreen = Float(drand48())
+        let randomBlue = Float(drand48())
+        return UIColor.init(colorLiteralRed: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
     }
 }

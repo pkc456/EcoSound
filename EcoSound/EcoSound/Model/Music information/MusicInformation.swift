@@ -11,6 +11,8 @@ import Foundation
 public class MusicInformation {
 	public var song : String?
 	public var artists : String?
+    public var type : String?
+    public var album : String?
     public var pathString : URL?
 /**
     Returns an array of models based on given dictionary.
@@ -46,6 +48,8 @@ public class MusicInformation {
 
 		song = dictionary[KTITLE_KEY] as? String
 		artists = dictionary[KARTIST_KEY] as? String
+        type = dictionary[KTYPE_KEY] as? String
+        album = dictionary[KALBUM_KEY] as? String
         pathString = dictionary[KPATH_STRING_KEY] as? URL
 	}
 
@@ -61,6 +65,8 @@ public class MusicInformation {
 
 		dictionary.setValue(self.song, forKey: KTITLE_KEY)
 		dictionary.setValue(self.artists, forKey: KARTIST_KEY)
+        dictionary.setValue(self.type, forKey: KTYPE_KEY)
+        dictionary.setValue(self.album, forKey: KALBUM_KEY)
         dictionary.setValue(self.pathString, forKey: KPATH_STRING_KEY)
 		return dictionary
 	}
