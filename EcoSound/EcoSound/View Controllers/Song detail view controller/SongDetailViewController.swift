@@ -44,8 +44,10 @@ class SongDetailViewController: UIViewController {
     
     //Set up audio player and play
     private func setUpAudioPlayer(){
-        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-        _ = try? AVAudioSession.sharedInstance().setActive(true)
+        //Have the ability to run in the background, allowing for other sounds to be output while continuing to play the .mp3
+        let audioSession = AVAudioSession.sharedInstance()
+        _ = try? audioSession.setCategory(AVAudioSessionCategoryPlayback, with: [.mixWithOthers])
+        _ = try? audioSession.setActive(true)
         
         do
         {
