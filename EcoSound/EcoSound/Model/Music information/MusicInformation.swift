@@ -10,9 +10,7 @@ import Foundation
 
 public class MusicInformation {
 	public var song : String?
-	public var url : String?
 	public var artists : String?
-	public var cover_image : String?
 
 /**
     Returns an array of models based on given dictionary.
@@ -47,9 +45,7 @@ public class MusicInformation {
 	required public init?(dictionary: NSDictionary) {
 
 		song = dictionary[KTITLE] as? String
-		url = dictionary["url"] as? String
-		artists = dictionary["artists"] as? String
-		cover_image = dictionary["cover_image"] as? String
+		artists = dictionary[KARTIST] as? String
 	}
 
 		
@@ -63,9 +59,7 @@ public class MusicInformation {
 		let dictionary = NSMutableDictionary()
 
 		dictionary.setValue(self.song, forKey: KTITLE)
-		dictionary.setValue(self.url, forKey: "url")
-		dictionary.setValue(self.artists, forKey: "artists")
-		dictionary.setValue(self.cover_image, forKey: "cover_image")
+		dictionary.setValue(self.artists, forKey: KARTIST)
 
 		return dictionary
 	}

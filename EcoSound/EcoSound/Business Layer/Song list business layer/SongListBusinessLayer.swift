@@ -31,20 +31,26 @@ class SongListBusinessLayer: NSObject
         let asset :AVAsset = AVAsset.init(url: url_Song_1!)
         
         
-        data.setValue("Pardeep", forKey: KTITLE)
+//        data.setValue("Pardeep", forKey: KTITLE)
         
         //pkc, pending
         
-        /*
-        for metaDataItems in asset.metadata {
+        
+        for metaDataItems in asset.commonMetadata {
             //getting the title of the song
             if metaDataItems.commonKey == "title" {
-                let titleData = metaDataItems.value as! NSString
-                let title = titleData.substring(to: 9)
-                data.setValue(title, forKey: "title")
+                if let title = metaDataItems.value{
+                    data.setValue(title, forKey: KTITLE)
+                }
+            }
+            
+            if metaDataItems.commonKey == "artist" {
+                if let artist = metaDataItems.value{
+                    data.setValue(artist, forKey: KARTIST)
+                }
             }
         }
-        */
+ 
         
         return data
     }
